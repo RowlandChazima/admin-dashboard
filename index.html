@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rowland | Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <!-- TOP BAR -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">User Management</h1>
+          <p class="page-sub">
+            Live data from <span class="api-tag">api/v1/users</span>
+          </p>
+        </div>
+        <div class="topbar-right">
+          <div class="admin-badge">Admin</div>
+        </div>
+      </header>
+
+      <!-- STAT CARDS -->
+      <section class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-label">Total Users</span>
+          <span class="stat-value" id="stat-total">—</span>
+        </div>
+        <div class="stat-card male">
+          <span class="stat-label">Male</span>
+          <span class="stat-value" id="stat-male">—</span>
+        </div>
+        <div class="stat-card female">
+          <span class="stat-label">Female</span>
+          <span class="stat-value" id="stat-female">—</span>
+        </div>
+        <div class="stat-card other">
+          <span class="stat-label">Other / Unspecified</span>
+          <span class="stat-value" id="stat-other">—</span>
+        </div>
+      </section>
+
+      <!-- SEARCH BAR -->
+      <div class="search-bar">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search by name, username or email..."
+        />
+      </div>
+
+      <!-- TABLE -->
+      <section class="table-wrapper">
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>User ID</th>
+              <th>Full Name</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Gender</th>
+              <th>Date of Birth</th>
+              <th>Joined</th>
+            </tr>
+          </thead>
+          <tbody id="users-tbody">
+            <!-- Info from the API endpoint goes here-->
+            <tr>
+              <td colspan="9" class="loading-row">users...</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
