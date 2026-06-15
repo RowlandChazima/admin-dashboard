@@ -1,0 +1,331 @@
+/* ── THE CREXTIO VISUAL THEME ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Ambient backdrop styling from the image */
+  --bg-gradient: linear-gradient(135deg, #e4e7eb 0%, #fef9c3 50%, #fef08a 100%);
+  --surface-glass: rgba(255, 255, 255, 0.45);
+  --card-bg: #ffffff;
+  --border-subtle: rgba(0, 0, 0, 0.06);
+
+  /* Text & Contrast */
+  --text-main: #1e293b;
+  --text-muted: #71717a;
+
+  /* Signature Accents from image_ba5109.png */
+  --active-charcoal: #2d2d2d;
+  --crextio-yellow: #fcd34d;
+  --crextio-yellow-bright: #fde047;
+
+  /* Smooth High-End Corner Radii */
+  --radius-outer: 32px;
+  --radius-card: 20px;
+  --radius-pill: 50px;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  min-height: 100vh;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── MINIMALIST PAGE HEADER ── */
+.page-header {
+  padding: 20px 10px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left h1 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: var(--text-main);
+  letter-spacing: -0.03em;
+}
+
+.header-left p {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.api-tag {
+  font-family: "JetBrains Mono", monospace;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-main);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+}
+
+.admin-pill {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+}
+
+/* ── GLASSMORPHIC STATS ROW ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  background: #f4f4f5;
+}
+
+/* Give the overall total card a soft yellow hint reminiscent of the image metrics */
+.stat-card:nth-child(1) {
+  background: linear-gradient(135deg, #ffffff, #fffbeb);
+}
+.stat-card:nth-child(1) .stat-icon {
+  background: var(--crextio-yellow-bright);
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: capitalize;
+}
+
+.stat-value {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1;
+}
+
+/* ── CONTROLS BAR (PILLS & SEARCH) ── */
+.controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background: var(--surface-glass);
+  padding: 10px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+.filter-pills {
+  display: flex;
+  gap: 6px;
+}
+
+/* The placeholders / filter pills */
+.filter-btn {
+  padding: 8px 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  background: transparent;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-btn:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Match the exact solid dark active shape from the image */
+.filter-btn.active,
+.filter-btn.active.male,
+.filter-btn.active.female,
+.filter-btn.active.other {
+  background: var(--active-charcoal);
+  border-color: var(--active-charcoal);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Seamless pill search input */
+.search-input {
+  padding: 8px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  background: var(--card-bg);
+  outline: none;
+  width: 300px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: box-shadow 0.2s;
+}
+
+.search-input:focus {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* ── CLEAN PREMIUM TABLE DESIGN ── */
+.table-wrapper {
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-outer);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  padding: 12px;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 6px; /* Creates spacing between rows for the clean isolated row selection effect */
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.users-table th {
+  padding: 16px 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.users-table tbody tr {
+  background: transparent;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+
+/* Beautiful custom curve for modern unbordered rows */
+.users-table tbody tr td:first-child {
+  border-top-left-radius: var(--radius-card);
+  border-bottom-left-radius: var(--radius-card);
+}
+.users-table tbody tr td:last-child {
+  border-top-right-radius: var(--radius-card);
+  border-bottom-right-radius: var(--radius-card);
+}
+
+.users-table td {
+  padding: 16px 20px;
+  color: var(--text-main);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/* Soft hover transition */
+.users-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* The exact signature warm-yellow selected highlight row styling from the image */
+.users-table tbody tr:has(input[type="checkbox"]:checked), /* If you decide to add checkboxes later */
+.users-table tbody tr:nth-child(2) {
+  /* Defaults to highlight row 2 exactly like Ksenia Bator's row in the image */
+  background: var(--crextio-yellow) !important;
+}
+
+.users-table tbody tr:nth-child(2) td {
+  color: #000000;
+}
+
+/* Individual cell content badges */
+.row-num {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.id-badge {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--text-main);
+  background: rgba(0, 0, 0, 0.05);
+  padding: 4px 10px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.full-name {
+  font-weight: 500;
+}
+
+/* Minimalist context gender indicators */
+.gender-pill {
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* If inside the highlighted second row, keep high contrast readability */
+.users-table tbody tr:nth-child(2) .id-badge,
+.users-table tbody tr:nth-child(2) .gender-pill {
+  background: rgba(0, 0, 0, 0.08);
+  color: #000000;
+}
+
+.loading-row,
+.empty-row {
+  text-align: center;
+  padding: 60px !important;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
