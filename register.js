@@ -42,10 +42,11 @@ form.addEventListener("submit", async function (e) {
   try {
     const response = await fetch(API_URL, {
       method: "POST",
-      { credentials: "include" },
+     
       headers: {
         "Content-Type": "application/json",
       },
+    credentials: "include",
       body: JSON.stringify(newUser),
     });
 
