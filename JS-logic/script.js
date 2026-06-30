@@ -28,46 +28,42 @@ IN JAVASCRIPT:
 
 const API_URL = "https://charity-minds-backend.onrender.com/api/v1/users";
 
-// ── STEP 1: FETCH THE DATA ──
-// TODO: Write an async function called fetchUsers()
-// Inside it, use fetch() to call the API_URL
-// Then get response.data and store it in a variable called users
-// Then call the functions below with that data
-
 async function fetchUsers() {
   const response = await fetch(API_URL);
   const data = await response.json();
   const users = data.data;
   users.sort((a, b) => {
     return new Date(a.createdAt) - new Date(b.createdAt);
-  }); // sorting the users i the order between who joined first to the last
+  });
+  const localUsers = JSON.parse(localStorage.getItem("localUsers")) || [];
+  const allUsers = [...users, ...localUsers];
 
   console.log(users);
 
-  renderStats(users); //Pass the users to this function
-  renderTable(users);
-  setupSearch(users);
+  renderStats(allUsers); //Pass the users to this function
+  renderTable(allUsers);
+  setupSearch(allUsers);
 }
 
 fetchUsers();
 
 // ── STEP 2: RENDER STATS ──
-function renderStats(users) {
+function renderStats(allUsers) {
   // TODO: Count total, male, female, other users
-  // Hint: use users.length for total
-  // Hint: use .filter() to count by gender
   // Then update the innerHTML of these 4 elements:
   // document.getElementById("stat-total")
   // document.getElementById("stat-male")
   // document.getElementById("stat-female")
-  const total = users.length;
-  const males = users.filter((user) => user.gender.toLowerCase() === "male");
+  const total = allUsers.length;
+  const males = allUsers.filter((user) => user.gender.toLowerCase() === "male");
   const totalMales = males.length;
-  const females = users.filter(
+  const females = allUsers.filter(
     (user) => user.gender.toLowerCase() === "female",
   );
   const totalFemales = females.length;
-  const other = users.filter((user) => user.gender.toLowerCase() === "other");
+  const other = allUsers.filter(
+    (user) => user.gender.toLowerCase() === "other",
+  );
   const otherTotal = other.length;
 
   document.getElementById("stat-total").textContent = total;
@@ -85,7 +81,6 @@ function maskId(id) {
 
 // ── STEP 4: FORMAT THE DATE ──
 function formatDate(dateStr) {
-  // We'll give you this one — dates are tricky
   const date = new Date(dateStr);
   return date.toLocaleDateString("en-KE", {
     year: "numeric",
@@ -95,19 +90,18 @@ function formatDate(dateStr) {
 }
 
 // ── STEP 5: RENDER THE TABLE ──
-function renderTable(users) {
+function renderTable(allUsers) {
   const tbody = document.getElementById("users-tbody");
   tbody.innerHTML = "";
 
   // TODO: Loop through users with .forEach()
   // For each user, create a <tr> with <td> cells for:
   // index (#), masked id, full name, username, email, phone, gender, dob, joined date
-  // Hint: use tbody.innerHTML += `<tr>...</tr>`
 
-  users.forEach((user, index) => {
+  allUsers.forEach((user, index) => {
     tbody.innerHTML += `<tr>
     <td>${index + 1}</td>
-    <td>${maskId(user._id)}</td>
+    <td>${user._id ? maskId(user._id) : "loca****user"}</td>
     <td>${user.firstName}   ${user.lastName} </td>
     <td>${user.username}</td>
     <td>${user.email}</td>
@@ -120,7 +114,7 @@ function renderTable(users) {
 }
 
 // ── STEP 6: SEARCH ──
-function setupSearch(users) {
+function setupSearch(allUsers) {
   const input = document.getElementById("search-input");
   const filterButtons = document.querySelectorAll(".filter-btn");
 
@@ -132,7 +126,7 @@ function setupSearch(users) {
       ? activeBtn.getAttribute("data-filter")
       : "all";
 
-    const filteredUsers = users.filter((user) => {
+    const filteredUsers = allUsers.filter((user) => {
       // 1. Check against the active placeholder/filter button selection
       const matchesGender =
         activeGenderFilter === "all" ||
@@ -167,5 +161,7 @@ function setupSearch(users) {
   });
 }
 
-// ── KICK EVERYTHING OFF ──
 // TODO: Call fetchUsers() at the bottom here
+
+// TODO: Handle the error handling for UX when the API
+// fails to bring back the data

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Charity Minds | Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+      <div class="header-left">
+        <h1>User Management</h1>
+      </div>
+      <div class="admin-pill">Admin</div>
+    </header>
+
+    <!-- STAT CARDS -->
+    <section class="stats-row">
+      <div class="stat-card">
+        <div class="stat-info">
+          <span class="stat-label">Total Users</span>
+          <span class="stat-value" id="stat-total">—</span>
+        </div>
+      </div>
+      <div class="stat-card male">
+        <div class="stat-info">
+          <span class="stat-label">Male</span>
+          <span class="stat-value" id="stat-male">—</span>
+        </div>
+      </div>
+      <div class="stat-card female">
+        <div class="stat-info">
+          <span class="stat-label">Female</span>
+          <span class="stat-value" id="stat-female">—</span>
+        </div>
+      </div>
+      <div class="stat-card other">
+        <div class="stat-info">
+          <span class="stat-label">Other</span>
+          <span class="stat-value" id="stat-other">—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTROLS BAR -->
+    <div class="controls-bar">
+      <div class="filter-pills">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn male" data-filter="male">Male</button>
+        <button class="filter-btn female" data-filter="female">Female</button>
+        <button class="filter-btn other" data-filter="other">Other</button>
+      </div>
+      <input
+        type="text"
+        class="search-input"
+        id="search-input"
+        placeholder="Search users..."
+      />
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-wrapper">
+      <table class="users-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>User ID</th>
+            <th>Full Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Joined</th>
+          </tr>
+        </thead>
+        <tbody id="users-tbody">
+          <tr>
+            <td colspan="9" class="loading-row">Loading users...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="../JS-logic/script.js"></script>
+  </body>
+</html>

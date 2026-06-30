@@ -1,0 +1,159 @@
+/* Base Reset & Theme Fonts */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Gradient matching the dashboard background */
+  background: linear-gradient(135deg, #fffdf0 0%, #fdf3c7 100%);
+  padding: 20px;
+}
+
+/* Container Card matching dashboard metrics cards */
+.login-card {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 35px;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(250, 204, 21, 0.2);
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card-header h2 {
+  font-size: 28px;
+  color: #1a1a1a;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.card-header p {
+  font-size: 14px;
+  color: #71717a;
+}
+
+/* Form Layout */
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #52525b;
+  margin-bottom: 8px;
+  padding-left: 12px;
+}
+
+/* Capsule inputs matching the dashboard search bar */
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 14px;
+  border-radius: 50px;
+  border: 1px solid #e4e4e7;
+  background-color: #fafafa;
+  color: #1a1a1a;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #facc15;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.15);
+}
+
+/* Help row for pass recovery */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  margin-bottom: 25px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #52525b;
+  cursor: pointer;
+}
+
+.remember-me input {
+  margin-right: 8px;
+  accent-color: #1a1a1a;
+}
+
+.forgot-pass {
+  font-size: 13px;
+  color: #71717a;
+  text-decoration: none;
+}
+
+.forgot-pass:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+/* Dark main button style matching 'All' pill button */
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 50px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+  background-color: #000000;
+}
+
+/* Footer and redirected yellow highlight pill area */
+.card-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-t: 1px solid #f4f4f5;
+  text-align: center;
+  font-size: 14px;
+  color: #52525b;
+}
+
+/* Matches the highlighted record styling from the table */
+.register-link {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 4px 14px;
+  background-color: #facc15;
+  color: #1a1a1a;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: background-color 0.2s ease;
+}
+
+.register-link:hover {
+  background-color: #fde047;
+}

@@ -1,0 +1,94 @@
+/* Base Reset & Theme Fonts */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Soft background gradient matching the dashboard */
+  background: linear-gradient(135deg, #fffdf0 0%, #fdf3c7 100%);
+  padding: 20px;
+}
+
+/* Container Card matching user management metrics style */
+.welcome-card {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 480px;
+  padding: 50px 40px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(250, 204, 21, 0.2);
+}
+
+/* Animated Success Checkmark Ring matching the yellow focus highlight */
+.success-icon {
+  width: 72px;
+  height: 72px;
+  background-color: #facc15;
+  color: #1a1a1a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px auto;
+  font-size: 32px;
+  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(250, 204, 21, 0.25);
+}
+
+/* Clean, deep charcoal header mirroring dashboard font weight */
+h1 {
+  font-size: 28px;
+  color: #1a1a1a;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+/* Dynamic user name highlight using the table selection style */
+#userGreeting {
+  color: #1a1a1a;
+  background-color: rgba(250, 204, 21, 0.25);
+  padding: 2px 10px;
+  border-radius: 8px;
+}
+
+/* Subdued, clean body text */
+p {
+  font-size: 15px;
+  color: #52525b;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+/* Pill action button matching the main dashboard filter buttons */
+.btn-continue {
+  display: inline-block;
+  width: 100%;
+  padding: 14px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 50px;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.btn-continue:hover {
+  background-color: #000000;
+}
+
+.btn-continue:active {
+  transform: scale(0.98);
+}
